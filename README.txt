@@ -1,4 +1,12 @@
-1. The offline running time is O(n) where n is the total number of characters in our input dictionary. We just need to load the words into our word bank, so there is nothing else to do in the offline step. The online step consists of two steps. The first step makes a character count dictionary of the input word. This takes O(m) time where m is the number of characters in the input word. The second step loops over all of the words in our word bank, constructs a character count dictionary for each word, and checks if the character count dictionary is the same as the input character count dictionary. .This step takes O(n) time where n is the total number of characters in our input dictionary. This is because essentially make one pass through all the characters to construct our character count dictionaries, and then another pass to compare dictionaries. So it takes roughly ~ 2n = O(n) time. So, overall, the program takes O(n + m) time. 
+1. The offline running time is O(n) where n is the total number of characters in our input dictionary. We just need to load the words into our word bank, so there is nothing else to do in the offline step. 
+
+The online step consists of three steps. The first step makes a character count dictionary of the input word. This takes O(m) time where m is the number of characters in the input word. 
+
+The second step loops over all of the words in our word bank, constructs a character count dictionary for each word, and checks if the character count dictionary is the same as the input character count dictionary. .This step takes O(n) time where n is the total number of characters in our input dictionary. This is because essentially make one pass through all the characters to construct our character count dictionaries, and then another pass to compare dictionaries. So it takes roughly ~ 2n = O(n) time. 
+
+The third step needs to sort our list of anagrams and then print it out. This is actually an expensive step since it involves a sort. Let the number of words in our word bank be w. Then, since our anagram list could contain every word in our word bank, sorting the anagram list takes O(wlog(w)) time. 
+
+So overall, the runtime of the program is O(wlog(w) + m + n). If the number of characters in a word in our word bank doesn't scale with how many words we have, then this becomes just O(wlog(w)). 
 
 2. The things we need to store are:
 
